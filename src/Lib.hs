@@ -1,6 +1,10 @@
-module Lib
-    ( helloWorld
-    ) where
+{-# LANGUAGE OverloadedStrings #-}
+
+module Lib ( helloWorld ) where
+
+import Web.Scotty
 
 helloWorld :: IO ()
-helloWorld = putStrLn "Hello world!"
+helloWorld = scotty 3000 $
+  get "/:word" $
+    html "<h1>Hello World!</h1>"
