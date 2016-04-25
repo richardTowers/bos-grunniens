@@ -1,6 +1,8 @@
 Bos Grunniens
 =============
 
+![cc-by-sa Dennis Jarvis](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bos_grunniens_at_Yundrok_Yumtso_Lake.jpg/320px-Bos_grunniens_at_Yundrok_Yumtso_Lake.jpg)
+
 A dashboard / command center for visualising and manging the state of a network of services.
 
 Architecture
