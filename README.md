@@ -8,8 +8,22 @@ A dashboard / command center for visualising and manging the state of a network 
 Architecture
 ------------
 
-Haskell web server wraps a number of plugins. Each plugin is responsible for gathering data from a particular source.
+A number of very simple sources poll the services we're interested in and output a stream of newline delimited JSON messages to standard out.
 
-CycleJS (?) front end listens to server through an EventSource. Plugins are configured with the location and types of visualisations that they produce.
+```
+$ stack exec bos-grunniens-jenkins
+{"key":"jenkins","message":{"...":"..."}}
+{"key":"jenkins","message":{"...":"..."}}
+{"key":"jenkins","message":{"...":"..."}}
+{"key":"jenkins","message":{"...":"..."}}
+```
 
+A separate process receives these messages through named pipes and exposes them as a [`text/event-stream`](https://html.spec.whatwg.org/multipage/comms.html#text/event-stream).
+
+The UI displays these streams of events.
+
+```
+$ stack exec bos-grunniens-event-stream <(stack exec bos-grunnines jenkins) <(stack exec bos-grunnines sensu)
+Streaming on port 1337...
+```
 
